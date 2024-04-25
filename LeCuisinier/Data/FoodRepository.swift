@@ -7,25 +7,21 @@
 
 import Foundation
 
-struct FoodDataSource {
-  var local: LocalRepository
-  var remote: RemoteRepository
-}
-
 protocol FoodRepositoryProtocol {
-  var repository: FoodDataSource { get }
   func fetchFoodCategoriesFromRemote() async throws -> [FoodCategory]
 }
 
 class FoodRepository: FoodRepositoryProtocol {
-  var repository: FoodDataSource
+  private var localManager: LocalRepository
+  private var remoteManager: RemoteRepository
   
-  init(repository: FoodDataSource) {
-    self.repository = repository
+  init(localManager: LocalRepository, remoteManager: RemoteRepository) {
+    self.localManager = localManager
+    self.remoteManager = remoteManager
   }
   
   func fetchFoodCategoriesFromRemote() async throws -> [FoodCategory] {
-    return try await repository.remote.foodServices.category.fetchFoodCategoryService()
+    return try await remoteManager.foodServices.category.fetchCategories()
   }
   
 }

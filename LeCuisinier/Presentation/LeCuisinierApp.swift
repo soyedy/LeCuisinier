@@ -25,7 +25,7 @@ struct LeCuisinierApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: FoodViewModel)
         }
         .modelContainer(sharedModelContainer)
     }

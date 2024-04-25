@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct FoodCategory: Codable {
+  var idCategory: UUID
+  var strCategory: String
+  var strCategoryThumb: URL
+  var strCategoryDescription: String
+}

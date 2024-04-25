@@ -7,43 +7,50 @@
 
 import Foundation
 
-struct FoodServices {
-  var category: FoodCategoryService
+protocol FoodServicesProtocol {
+  var category: FoodCategoryServiceProtocol { get }
+}
+
+class FoodServices: FoodServicesProtocol {
+  var category: FoodCategoryServiceProtocol
+  
+  init(category: FoodCategoryServiceProtocol) {
+    self.category = category
+  }
+  
 }
 
 protocol RemoteRepositoryProtocol {
-  var foodServices: FoodServices { get }
   func fetchFoodCategories() async throws -> [FoodCategory]
 }
 
 class RemoteRepository: RemoteRepositoryProtocol {
-  var foodServices: FoodServices
+  var foodServices: FoodServicesProtocol
   
-  init(foodServices: FoodServices) {
+  init(foodServices: FoodServicesProtocol) {
     self.foodServices = foodServices
   }
   
   func fetchFoodCategories() async throws -> [FoodCategory] {
-    let category = try await foodServices.category.fetchFoodCategoryService()
-    return category
+    return try await foodServices.category.fetchCategories()
   }
 }
 
 protocol FoodCategoryServiceProtocol {
-  func fetchFoodCategoryService() async throws -> [FoodCategory]
+  func fetchCategories() async throws -> [FoodCategory]
 }
 
-struct FoodCategoryService: FoodCategoryServiceProtocol {
+class FoodCategoryService: FoodCategoryServiceProtocol {
   
-  func fetchFoodCategoryService() async throws -> [FoodCategory] {
+  func fetchCategories() async throws -> [FoodCategory] {
     guard let url = URL(string: "https://www.themealdb.com/api/json/v1/1/categories.php") else {
-      throw FetchError.FailedFetching
+      throw FetchError.failedWhileFetching
     }
     
     let (data, response) = try await URLSession.shared.data(from: url)
     
     guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
-      throw FetchError.FailedFetching
+      throw FetchError.failedWhileFetching
     }
     return try decodeDataFromServer(data: data)
   }
@@ -54,13 +61,14 @@ struct FoodCategoryService: FoodCategoryServiceProtocol {
       let categories = try decoder.decode([FoodCategory].self, from: data)
       return categories
     } catch {
-      throw FetchError.FailedFetching
+      throw FetchError.failedWhileDecoding
     }
   }
 }
 
 enum FetchError: Error {
-  case FailedFetching
-  case NoCategoriesFound
-  case NoInternetConnection
+  case failedWhileFetching
+  case failedWhileDecoding
+  case noCategoriesFound
+  case noInternetConnectionFound
 }

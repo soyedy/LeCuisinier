@@ -7,14 +7,21 @@
 
 import Foundation
 
-struct FoodCategory: Codable {
-  var idCategory: UUID
-  var strCategory: String
-  var strCategoryThumb: URL
-  var strCategoryDescription: String
+protocol FetchCategoriesProtocol {
+  func execute() async throws -> [FoodCategory]
 }
 
-protocol FetchCategoryService {
-  func fetchCategory() -> Category
+class FetchCategoriesEntity: FetchCategoriesProtocol {
+  var repository: FoodRepositoryProtocol
+  
+  init(repository: FoodRepositoryProtocol) {
+    self.repository = repository
+  }
+  
+  func execute() async throws -> [FoodCategory] {
+    return try await repository.fetchFoodCategoriesFromRemote()
+  }
+  
 }
+
 
