@@ -50,7 +50,7 @@ struct ContentView: View {
   
   private func addItem() {
     Task {
-      try await viewModel.fetchFoodCategories()
+      await viewModel.fetchFoodCategories()
     }
   }
   

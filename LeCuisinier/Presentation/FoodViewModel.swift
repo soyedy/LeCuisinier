@@ -18,7 +18,7 @@ struct FoodUseCases: FoodUseCasesProtocol {
 
 protocol FoodViewModelProtocol: ObservableObject {
   var useCases: FoodUseCasesProtocol { get }
-  func fetchFoodCategories() async throws
+  func fetchFoodCategories() async
 }
 
 class FoodViewModel: FoodViewModelProtocol {
@@ -28,9 +28,16 @@ class FoodViewModel: FoodViewModelProtocol {
   init(useCases: FoodUseCasesProtocol) {
     self.useCases = useCases
   }
-
-  func fetchFoodCategories() async throws {
-    categories = try await useCases.fetchCategories.execute()
+  
+  func fetchFoodCategories() async {
+    do {
+      let fetchedCategories = try await useCases.fetchCategories.execute()
+      await MainActor.run {
+        self.categories = fetchedCategories
+      }
+    } catch {
+      
+    }
   }
   
 }

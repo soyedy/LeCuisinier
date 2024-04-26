@@ -58,7 +58,8 @@ class FoodCategoryService: FoodCategoryServiceProtocol {
   private func decodeDataFromServer(data: Data) throws -> [FoodCategory] {
     do {
       let decoder = JSONDecoder()
-      let categories = try decoder.decode([FoodCategory].self, from: data)
+      let categoriesResponse = try decoder.decode(FoodCategoriesResponse.self, from: data)
+      let categories = categoriesResponse.categories
       return categories
     } catch {
       throw FetchError.failedWhileDecoding

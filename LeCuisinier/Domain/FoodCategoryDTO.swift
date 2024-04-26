@@ -8,9 +8,13 @@
 import Foundation
 import SwiftUI
 
+struct FoodCategoriesResponse: Codable {
+    var categories: [FoodCategory]
+}
+
 struct FoodCategory: Codable {
-  var idCategory: UUID
-  var strCategory: String
-  var strCategoryThumb: URL
-  var strCategoryDescription: String
+    var idCategory: String
+    var strCategory: String
+    var strCategoryThumb: String
+    var strCategoryDescription: String
 }

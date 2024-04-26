@@ -25,7 +25,18 @@ struct LeCuisinierApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: FoodViewModel)
+          ContentView(
+            viewModel:
+              FoodViewModel(
+                useCases: 
+                  FoodUseCases(
+                    fetchCategories: 
+                      FetchCategoriesEntity(
+                        repository:
+                          FoodRepository(
+                            localManager: LocalRepository(), 
+                            remoteManager: RemoteRepository(
+                              foodServices: FoodServices(category: FoodCategoryService())))))))
         }
         .modelContainer(sharedModelContainer)
     }
