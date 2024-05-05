@@ -8,30 +8,22 @@
 import Foundation
 import SwiftUI
 
-protocol FoodUseCasesProtocol {
-  var fetchCategories: FetchCategoriesProtocol { get }
-}
-
-struct FoodUseCases: FoodUseCasesProtocol {
-  var fetchCategories: FetchCategoriesProtocol
-}
-
 protocol FoodViewModelProtocol: ObservableObject {
-  var useCases: FoodUseCasesProtocol { get }
+  var interactors: FoodInteractorsProtocol { get }
   func fetchFoodCategories() async
 }
 
 class FoodViewModel: FoodViewModelProtocol {
-  var useCases: FoodUseCasesProtocol
+  var interactors: FoodInteractorsProtocol
   @Published var categories: [FoodCategory] = []
   
-  init(useCases: FoodUseCasesProtocol) {
-    self.useCases = useCases
+  init(interactors: FoodInteractorsProtocol) {
+    self.interactors = interactors
   }
   
   func fetchFoodCategories() async {
     do {
-      let fetchedCategories = try await useCases.fetchCategories.execute()
+      let fetchedCategories = try await interactors.fetchCategories.execute()
       await MainActor.run {
         self.categories = fetchedCategories
       }

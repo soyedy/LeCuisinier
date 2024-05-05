@@ -8,7 +8,9 @@
 import Foundation
 
 protocol FoodRepositoryProtocol {
-  func fetchFoodCategoriesFromRemote() async throws -> [FoodCategory]
+  func fetchFoodCategoriesFromRemote() async throws -> [FoodCategoryDTO]
+  func fetchSelectedCategoryFromRemote(_ category: String) async throws -> FoodCategoryDTO
+  func fetchSelectedMealFromCategory(meal id: String) async throws -> [MealDTO]
 }
 
 class FoodRepository: FoodRepositoryProtocol {
@@ -20,8 +22,16 @@ class FoodRepository: FoodRepositoryProtocol {
     self.remoteManager = remoteManager
   }
   
-  func fetchFoodCategoriesFromRemote() async throws -> [FoodCategory] {
-    return try await remoteManager.foodServices.category.fetchCategories()
+  func fetchFoodCategoriesFromRemote() async throws -> [FoodCategoryDTO] {
+    return try await remoteManager.fetchFoodCategories()
+  }
+  
+  func fetchSelectedCategoryFromRemote(_ category: String) async throws -> FoodCategoryDTO {
+    return try await remoteManager.fetchFoodCategory(by: category)
+  }
+  
+  func fetchSelectedMealFromCategory(meal: String) async throws -> [MealDTO] {
+    return try await remoteManager.fetchMeal(by: meal)
   }
   
 }

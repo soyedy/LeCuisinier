@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-struct FoodCategoriesResponse: Codable {
-    var categories: [FoodCategory]
+struct FoodCategoriesResponseDTO: Codable {
+    var categories: [FoodCategoryDTO]
 }
 
-struct FoodCategory: Codable {
+struct FoodCategoryDTO: Codable {
     var idCategory: String
     var strCategory: String
     var strCategoryThumb: String
