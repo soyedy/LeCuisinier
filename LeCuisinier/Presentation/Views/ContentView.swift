@@ -8,58 +8,49 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct FoodCategoryView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var items: [Item]
-  @StateObject var viewModel: FoodViewModel
+  @ObservedObject var viewModel: FoodViewModel
+  
+  private let gridLayout: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
   
   var body: some View {
-    NavigationSplitView {
-      List {
-        ForEach(items) { item in
-          NavigationLink {
-            Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-          } label: {
-            Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+    NavigationView {
+      ScrollView {
+        LazyVGrid(columns: gridLayout) {
+          ForEach($viewModel.categories, id: \.idCategory) { $category in
+            VStack {
+              AsyncImage(url: URL(string: category.strCategoryThumb)) { image in
+                image.resizable()
+              } placeholder: {
+                ProgressView()
+              }
+              .frame(width: 120, height: 100)
+              .background(Color.gray.opacity(0.2))
+              .cornerRadius(10)
+              
+              Text(category.strCategory)
+                .font(.headline)
+                .foregroundColor(.primary)
+                .padding(.top, 8)
+            }
+            .padding()
+            .cornerRadius(10)
           }
         }
-        .onDelete(perform: deleteItems)
+        .background(Color(.systemBackground))
+        .edgesIgnoringSafeArea(.all)
+        .padding()
       }
-#if os(macOS)
-      .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-      .toolbar {
-#if os(iOS)
-        ToolbarItem(placement: .navigationBarTrailing) {
-          EditButton()
-        }
-#endif
-        ToolbarItem {
-          Button(action: addItem) {
-            Label("Add Item", systemImage: "plus")
-          }
-        }
-      }
-    } detail: {
-      Text("Select an item")
+      .navigationTitle("Explore categories")
+      .navigationBarTitleDisplayMode(.large)
     }
-    .onAppear() {
-      
-    }
-  }
-  
-  private func addItem() {
-    Task {
-      await viewModel.fetchFoodCategories()
-    }
-  }
-  
-  private func deleteItems(offsets: IndexSet) {
-    withAnimation {
-      for index in offsets {
-        modelContext.delete(items[index])
+
+    .onAppear {
+      Task {
+        await viewModel.fetchFoodCategories()
       }
     }
   }
 }
-

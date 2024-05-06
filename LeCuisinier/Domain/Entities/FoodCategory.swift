@@ -8,7 +8,7 @@
 import Foundation
 
 struct FoodCategoriesResponse {
-    var categories: [FoodCategoryDTO]
+    var categories: [FoodCategory]
 }
 
 struct FoodCategory {
