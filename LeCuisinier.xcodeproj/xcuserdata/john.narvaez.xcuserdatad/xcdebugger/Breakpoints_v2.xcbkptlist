@@ -3,4 +3,150 @@
    uuid = "BA09E920-5A94-4620-AD9C-A3F2C6A1AB37"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D7E98CA-F58D-4699-BB1E-71D86BC4105B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LeCuisinier/Data/DataSource/Services/FetchCategorySelection.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "fetch(selected:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88B7C2FD-901D-4210-AEAA-82E32812BCBC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LeCuisinier/Data/Helpers/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "fetchData(from:as:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55CEC420-E5B3-4C8A-9593-B3DF64C3FE9B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LeCuisinier/Data/Helpers/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "fetchData(from:as:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F4DA4369-B235-49E1-A396-9CC0B183F701"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LeCuisinier/Data/Helpers/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "decodeData(data:as:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F4DA4369-B235-49E1-A396-9CC0B183F701 - 84d714f1a74db7ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LeCuisinier.NetworkService.decodeData&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(data: Foundation.Data, as: &#x3c4;_0_0.Type) throws -&gt; &#x3c4;_0_0"
+                  moduleName = "LeCuisinier"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john.narvaez/Desktop/LeCuisinier/LeCuisinier/Data/Helpers/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "F4DA4369-B235-49E1-A396-9CC0B183F701 - 84d714f1a74db7ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LeCuisinier.NetworkService.decodeData&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(data: Foundation.Data, as: &#x3c4;_0_0.Type) throws -&gt; &#x3c4;_0_0"
+                  moduleName = "LeCuisinier"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john.narvaez/Desktop/LeCuisinier/LeCuisinier/Data/Helpers/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "328">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1636199C-E3A5-446B-AF0C-18BAEFCDD3DD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LeCuisinier/Domain/Interactors/FetchCategoryInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "execute(category:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1636199C-E3A5-446B-AF0C-18BAEFCDD3DD - 9c0cef6b63ce6359"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for LeCuisinier.FetchSelectedCategory.execute(category: Swift.String) async throws -&gt; Swift.Array&lt;LeCuisinier.MealByCategory&gt;"
+                  moduleName = "LeCuisinier"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john.narvaez/Desktop/LeCuisinier/LeCuisinier/Domain/Interactors/FetchCategoryInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "1636199C-E3A5-446B-AF0C-18BAEFCDD3DD - f1c7f6589148f957"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (LeCuisinier.MealByCategoryDTO) -&gt; Swift.Optional&lt;LeCuisinier.MealByCategory&gt; in LeCuisinier.FetchSelectedCategory.execute(category: Swift.String) async throws -&gt; Swift.Array&lt;LeCuisinier.MealByCategory&gt;"
+                  moduleName = "LeCuisinier"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john.narvaez/Desktop/LeCuisinier/LeCuisinier/Domain/Interactors/FetchCategoryInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

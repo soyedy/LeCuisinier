@@ -6,7 +6,7 @@
 //
 
 protocol FetchSelectedCategoryProtocol {
-  func exectute(category: String) async throws -> FoodCategory
+  func execute(category: String) async throws -> [MealByCategory]
 }
 
 class FetchSelectedCategory: FetchSelectedCategoryProtocol {
@@ -16,11 +16,10 @@ class FetchSelectedCategory: FetchSelectedCategoryProtocol {
     self.repository = repository
   }
   
-  func exectute(category: String) async throws -> FoodCategory {
-    let category = try await repository.fetchSelectedCategoryFromRemote(category)
-    return FoodCategory(idCategory: category.idCategory,
-                        strCategory: category.strCategory,
-                        strCategoryThumb: category.strCategoryThumb,
-                        strCategoryDescription: category.strCategoryDescription)
+  func execute(category: String) async throws -> [MealByCategory] {
+    let meals = try await repository.fetchMealsBySelected(category: category)
+    return meals.compactMap { meal in
+      MealByCategory(strMeal: meal.strMeal, strMealThumb: meal.strMealThumb, idMeal: meal.idMeal)
+    }
   }
 }

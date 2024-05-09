@@ -5,8 +5,6 @@
 //  Created by John Edward Narvaez Londono on 3/05/24.
 //
 
-import Foundation
-
 struct MealsResponseDTO: Codable {
   let meals: [MealDTO]
 }

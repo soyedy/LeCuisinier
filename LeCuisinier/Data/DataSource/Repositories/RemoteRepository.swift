@@ -9,7 +9,7 @@ import Foundation
 
 protocol RemoteRepositoryProtocol {
   func fetchFoodCategories() async throws -> [FoodCategoryDTO]
-  func fetchFoodCategory(by selection: String) async throws -> FoodCategoryDTO
+  func fetchMeals(by category: String) async throws -> [MealByCategoryDTO]
   func fetchMeal(by meal: String) async throws -> [MealDTO]
 }
 
@@ -24,8 +24,8 @@ class RemoteRepository: RemoteRepositoryProtocol {
     return try await foodServices.category.fetchCategories()
   }
   
-  func fetchFoodCategory(by selection: String) async throws -> FoodCategoryDTO {
-    return try await foodServices.selectCategory.fetch(selected: selection)
+  func fetchMeals(by category: String) async throws -> [MealByCategoryDTO] {
+    return try await foodServices.selectCategory.fetch(selected: category)
   }
   
   func fetchMeal(by meal: String) async throws -> [MealDTO] {

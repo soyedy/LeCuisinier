@@ -9,13 +9,15 @@ import Foundation
 import SwiftUI
 
 protocol FoodViewModelProtocol: ObservableObject {
-  var interactors: FoodInteractorsProtocol { get }
   func fetchFoodCategories() async
+  func fetchMeals(by category: FoodCategory) async
+  func fetchSelected(meal: Meal) async
 }
 
 class FoodViewModel: FoodViewModelProtocol {
-  var interactors: FoodInteractorsProtocol
+  private var interactors: FoodInteractorsProtocol
   @Published var categories: [FoodCategory] = []
+  @Published var mealsBySelectedCategory: [MealByCategory] = []
   
   init(interactors: FoodInteractorsProtocol) {
     self.interactors = interactors
@@ -30,6 +32,21 @@ class FoodViewModel: FoodViewModelProtocol {
     } catch {
       
     }
+  }
+  
+  func fetchMeals(by category: FoodCategory) async {
+    do {
+      let meals = try await interactors.fetchSelectedCategory.execute(category: category.strCategory)
+      await MainActor.run {
+        self.mealsBySelectedCategory = meals
+      }
+    } catch {
+      
+    }
+  }
+  
+  func fetchSelected(meal: Meal) async {
+    
   }
   
 }

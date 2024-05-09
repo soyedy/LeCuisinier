@@ -69,7 +69,7 @@ struct LeCuisinierApp: App {
   
   var body: some Scene {
     WindowGroup {
-      FoodCategoryView(viewModel: foodViewModel)
+      HomeView(foodViewModel: foodViewModel)
     }
     .modelContainer(sharedModelContainer)
   }
