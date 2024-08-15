@@ -55,23 +55,25 @@ struct MealsView: View {
     ScrollView {
       LazyVGrid(columns: gridLayout) {
         ForEach(viewModel.mealsBySelectedCategory, id: \.idMeal) { meal in
-          VStack {
-            AsyncImage(url: URL(string: meal.strMealThumb)) { image in
-              image.resizable()
-            } placeholder: {
-              ProgressView()
+          NavigationLink(destination: MealDetail(meal: meal)) {
+            VStack {
+              AsyncImage(url: URL(string: meal.strMealThumb)) { image in
+                image.resizable()
+              } placeholder: {
+                ProgressView()
+              }
+              .frame(width: 120, height: 120)
+              .background(Color.gray.opacity(0.2))
+              .cornerRadius(10)
+              
+              Text(meal.strMeal)
+                .font(.headline)
+                .foregroundColor(.primary)
+                .padding(.top, 8)
             }
-            .frame(width: 120, height: 120)
-            .background(Color.gray.opacity(0.2))
+            .padding()
             .cornerRadius(10)
-            
-            Text(meal.strMeal)
-              .font(.headline)
-              .foregroundColor(.primary)
-              .padding(.top, 8)
           }
-          .padding()
-          .cornerRadius(10)
         }
       }
       .navigationTitle("\(category.strCategory) dishes")
@@ -80,6 +82,28 @@ struct MealsView: View {
       Task {
         await viewModel.fetchMeals(by: category)
       }
+    }
+  }
+}
+
+struct MealDetail: View {
+  var meal: MealByCategory
+  private let gridLayout: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+  var body: some View {
+    ZStack {
+      ScrollView {
+        VStack {
+          AsyncImage(url: URL(string: meal.strMealThumb)) { image in
+            image.resizable()
+          } placeholder: {
+            ProgressView()
+          }
+          .frame(width: 400, height: 400)
+          .background(Color.gray.opacity(0.2))
+          .cornerRadius(10)
+        }
+      }
+      .padding()
     }
   }
 }

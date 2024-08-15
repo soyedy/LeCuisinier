@@ -100,53 +100,5 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1636199C-E3A5-446B-AF0C-18BAEFCDD3DD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LeCuisinier/Domain/Interactors/FetchCategoryInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "execute(category:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1636199C-E3A5-446B-AF0C-18BAEFCDD3DD - 9c0cef6b63ce6359"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for LeCuisinier.FetchSelectedCategory.execute(category: Swift.String) async throws -&gt; Swift.Array&lt;LeCuisinier.MealByCategory&gt;"
-                  moduleName = "LeCuisinier"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/john.narvaez/Desktop/LeCuisinier/LeCuisinier/Domain/Interactors/FetchCategoryInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "116">
-               </Location>
-               <Location
-                  uuid = "1636199C-E3A5-446B-AF0C-18BAEFCDD3DD - f1c7f6589148f957"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (LeCuisinier.MealByCategoryDTO) -&gt; Swift.Optional&lt;LeCuisinier.MealByCategory&gt; in LeCuisinier.FetchSelectedCategory.execute(category: Swift.String) async throws -&gt; Swift.Array&lt;LeCuisinier.MealByCategory&gt;"
-                  moduleName = "LeCuisinier"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/john.narvaez/Desktop/LeCuisinier/LeCuisinier/Domain/Interactors/FetchCategoryInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
